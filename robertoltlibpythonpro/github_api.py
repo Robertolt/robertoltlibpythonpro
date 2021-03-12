@@ -1,7 +1,7 @@
 import requests
 
 
-def buscar_avatar(user : str) -> str:
+def buscar_avatar(user: str) -> str:
     """
     Buscar o avatar de um user do github
     :param user:str
