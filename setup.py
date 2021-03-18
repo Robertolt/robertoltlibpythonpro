@@ -98,7 +98,7 @@ PACKAGE = "robertoltlibpythonpro"
 NAME = PACKAGE
 DESCRIPTION = "Module to exemplify the creations of releases"
 AUTHOR = "Robertolt"
-AUTHOR_EMAIL = "rl.beto.lorenzoni@gmail.com"
+AUTHOR_EMAIL = "rl.beto.lorenzoni@gmail.com>"
 URL = "https://github.com/robertolt/robertollibpythonpro"
 VERSION = __import__(PACKAGE).__version__
 
@@ -108,8 +108,8 @@ setup(
     description=DESCRIPTION,
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
-    author=AUTHOR,
-    author_email=AUTHOR_EMAIL,
+    author="Robertolt",
+    author_email="rl.beto.lorenzoni@gmail.com>",
     license="GNU AFFERO GENERAL PUBLIC LICENSE",
     url=URL,
     packages=find_packages(exclude=["tests.*", "tests"]),
