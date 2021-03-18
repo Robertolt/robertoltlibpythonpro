@@ -98,7 +98,7 @@ PACKAGE = "robertoltlibpythonpro"
 NAME = PACKAGE
 DESCRIPTION = "Module to exemplify the creations of releases"
 AUTHOR = "Robertolt"
-AUTHOR_EMAIL = "email"
+AUTHOR_EMAIL = "rl.beto.lorenzoni@gmail.com"
 URL = "https://github.com/robertolt/robertollibpythonpro"
 VERSION = __import__(PACKAGE).__version__
 
