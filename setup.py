@@ -109,7 +109,7 @@ setup(
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     author="Robertolt",
-    author_email="rl.beto.lorenzoni@gmail.com",
+    author_email=AUTHOR_EMAIL,
     license="GNU AFFERO GENERAL PUBLIC LICENSE",
     url=URL,
     packages=find_packages(exclude=["tests.*", "tests"]),
