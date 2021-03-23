@@ -3,11 +3,16 @@ mccabe==0.6.1
 pycodestyle==2.6.0
 pyflakes==2.2.0
 
-# Deps do pytest
+# pytest deps
 attrs==20.3.0
 iniconfig==1.1.1
 pluggy==0.13.1
 py==1.10.0
 pytest==6.2.2
 toml==0.10.2
+
+#covarage deps
+coverage==5.5
+pytest-cov==2.11.1
+
 -r requirements.txt
