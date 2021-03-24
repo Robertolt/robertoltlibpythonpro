@@ -1,3 +1,9 @@
 class Sender:
-    def send(self, sender, receiver, assunto, corpo):
-        return sender
+    def send(self, shipper, receiver, assunto, corpo):
+        if '@' not in shipper:
+            raise InvalidEmail(f'Invalid shipper email: {shipper}')
+        return shipper
+
+
+class InvalidEmail(Exception):
+    pass
