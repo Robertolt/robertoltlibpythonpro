@@ -5,6 +5,18 @@ from robertoltlibpythonpro.spam.main import SpamSender
 from robertoltlibpythonpro.spam.modules import User
 
 
+class SenderMock(Sender):
+
+    def __init__(self):
+        super().__init__()
+        self.amt_email_sent += 0
+        self.send_parameters = None
+
+    def send(self, shipper, receiver, assunto, corpo):
+        self.send_parameters = (shipper, receiver, assunto, corpo)
+        self.amt_email_sent += 1
+
+
 @pytest.mark.parametrize(
     'users',
     [
@@ -18,10 +30,9 @@ from robertoltlibpythonpro.spam.modules import User
     ]
 )
 def test_spam_amt(session, users):
-
     for user in users:
         session.save(user)
-    sender = Sender()
+    sender = SenderMock()
     spam_sender = SpamSender(session, sender)
     spam_sender.enviar_emails(
         'rl.beto.lorenzoni@gmail.com',
@@ -29,3 +40,21 @@ def test_spam_amt(session, users):
         'Confira os modulos fantasticos'
     )
     assert len(users) == sender.amt_sent_email
+
+
+def test_spam_parameter(session):
+    user = User(name='Roberto', email='rl.beto.lorenzoni@gmail.com')
+    session.save(user)
+    sender = SenderMock()
+    spam_sender = SpamSender(session, sender)
+    spam_sender.enviar_emails(
+        'js.janine@gmail.com',
+        'Curso Python Pro',
+        'Confira os modulos fantasticos'
+    )
+    assert sender.send_parameters == (
+        'js.janine@gmail.com',
+        'rl.beto.lorenzoni@gmail.com',
+        'Curso Python Pro',
+        'Confira os modulos fantasticos',
+    )
