@@ -7,10 +7,8 @@ def test_save_user(session):
     assert isinstance(user.id, int)
 
 
-
-
 def test_list_user(session):
-    users = [User(name='Roberto',email='rl.beto.lorenzoni@gmail.com'),
+    users = [User(name='Roberto', email='rl.beto.lorenzoni@gmail.com'),
              User(name='Janine', email='js.lorenzoni@gmail.com')
              ]
     for user in users:

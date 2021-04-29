@@ -10,5 +10,3 @@ def search_for_avatar(user: str) -> str:
     url = f'https://api.github.com/users/{user}'
     resp = requests.get(url)
     return resp.json()['avatar_url']
-
-

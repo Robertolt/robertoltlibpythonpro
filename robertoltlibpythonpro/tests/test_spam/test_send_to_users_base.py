@@ -23,11 +23,11 @@ class SenderMock(Sender):
     'users',
     [
         [
-             User(name='Roberto',email='rl.beto.lorenzoni@gmail.com'),
+             User(name='Roberto', email='rl.beto.lorenzoni@gmail.com'),
              User(name='Janine', email='js.lorenzoni@gmail.com')
         ],
         [
-             User(name='Roberto',email='rl.beto.lorenzoni@gmail.com')
+             User(name='Roberto', email='rl.beto.lorenzoni@gmail.com')
         ]
     ]
 )
