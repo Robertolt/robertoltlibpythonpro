@@ -1,3 +1,5 @@
+from unittest.mock import Mock
+
 import pytest
 
 from robertoltlibpythonpro.spam.email_sender import Sender
@@ -32,27 +34,27 @@ class SenderMock(Sender):
 def test_spam_amt(session, users):
     for user in users:
         session.save(user)
-    sender = SenderMock()
+    sender = Mock()
     spam_sender = SpamSender(session, sender)
     spam_sender.enviar_emails(
         'rl.beto.lorenzoni@gmail.com',
         'Curso Python Pro',
         'Confira os modulos fantasticos'
     )
-    assert len(users) == sender.amt_email_sent
+    assert len(users) == sender.send.call_count
 
 
 def test_spam_parameter(session):
     user = User(name='Roberto', email='rl.beto.lorenzoni@gmail.com')
     session.save(user)
-    sender = SenderMock()
+    sender = Mock()
     spam_sender = SpamSender(session, sender)
     spam_sender.enviar_emails(
         'js.janine@gmail.com',
         'Curso Python Pro',
         'Confira os modulos fantasticos'
     )
-    assert sender.send_parameters == (
+    sender.send.assert_called_once_with(
         'js.janine@gmail.com',
         'rl.beto.lorenzoni@gmail.com',
         'Curso Python Pro',
