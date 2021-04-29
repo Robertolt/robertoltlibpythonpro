@@ -9,7 +9,7 @@ class SenderMock(Sender):
 
     def __init__(self):
         super().__init__()
-        self.amt_email_sent += 0
+        self.amt_email_sent = 0
         self.send_parameters = None
 
     def send(self, shipper, receiver, assunto, corpo):
@@ -39,7 +39,7 @@ def test_spam_amt(session, users):
         'Curso Python Pro',
         'Confira os modulos fantasticos'
     )
-    assert len(users) == sender.amt_sent_email
+    assert len(users) == sender.amt_email_sent
 
 
 def test_spam_parameter(session):
