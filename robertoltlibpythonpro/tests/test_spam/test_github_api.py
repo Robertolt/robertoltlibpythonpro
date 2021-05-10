@@ -6,7 +6,7 @@ from robertoltlibpythonpro import github_api
 
 
 @pytest.fixture
-def avatar_url():
+def avatar_url(mocker):
     resp_mock = Mock()
     url = 'https://avatars.githubusercontent.com/u/69603400?v=4'
     resp_mock.json.return_value = {
@@ -14,10 +14,10 @@ def avatar_url():
         'id': 69603400,
         'avatar_url': url,
     }
-    original_get = github_api.requests.get
-    github_api.requests.get = Mock(return_value=resp_mock)
-    yield url
-    github_api.requests.get = original_get
+    get_mock = mocker.patch('robertoltlibpythonpro.github_api.requests.get')
+    get_mock.return_value = resp_mock
+    return url
+
 
 
 def test_search_for_avatar(avatar_url):
